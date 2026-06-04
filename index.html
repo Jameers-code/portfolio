@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaik Jameer Ahmed — Full-Stack Developer & Cloud Engineer</title>
+  <meta name="description" content="Full-Stack Developer & Cloud Engineer. Recognized by Microsoft, AWS & Google. Top 1,500 nationally in Google The Big Code 2026." />
+  <meta name="keywords" content="Shaik Jameer Ahmed, Full-Stack Developer, Cloud Engineer, AWS, Microsoft, Google, Next.js, React, Node.js" />
+  <meta property="og:title" content="Shaik Jameer Ahmed — Full-Stack Developer" />
+  <meta property="og:description" content="Full-Stack Developer & Cloud Engineer. Recognized by Microsoft, AWS & Google." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+  <!-- CANVAS BACKGROUND -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader" role="status" aria-label="Loading">
+    <div class="loader-inner">
+      <div class="loader-logo">SJA</div>
+      <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
+      <div class="loader-text" id="loaderText">Initializing...</div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <a href="#home" class="logo" aria-label="Shaik Jameer Ahmed - Home">
+      <span class="logo-text">SJA</span>
+      <span class="logo-dot" aria-hidden="true"></span>
+    </a>
+    <div class="nav-center">
+      <div class="nav-links" role="list">
+        <a href="#about" role="listitem">About</a>
+        <a href="#skills" role="listitem">Skills</a>
+        <a href="#experience" role="listitem">Experience</a>
+        <a href="#projects" role="listitem">Projects</a>
+        <a href="#achievements" role="listitem">Awards</a>
+        <a href="#contact" role="listitem">Contact</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="mailto:jameer.xxvi@gmail.com" class="nav-cta" aria-label="Hire Jameer">
+        <span>Hire Me</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Awards</a>
+      <a href="#contact">Contact</a>
+      <a href="mailto:jameer.xxvi@gmail.com" class="mobile-cta">Hire Me →</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-mesh" aria-hidden="true">
+      <div class="mesh-orb orb1"></div>
+      <div class="mesh-orb orb2"></div>
+      <div class="mesh-orb orb3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge" data-animate="fadeUp">
+        <span class="badge-pulse" aria-hidden="true"></span>
+        <span>Open to SDE Internships · 2026</span>
+        <span class="badge-arrow" aria-hidden="true">✦</span>
+      </div>
+      <h1 class="hero-title" data-animate="fadeUp" data-delay="100">
+        <span class="title-line">Shaik Jameer</span>
+        <span class="title-line grad-text">Ahmed.</span>
+      </h1>
+      <p class="hero-tagline" data-animate="fadeUp" data-delay="200">
+        Full-Stack Developer <span class="sep" aria-hidden="true">·</span> Cloud Engineer <span class="sep" aria-hidden="true">·</span> Community Builder
+      </p>
+      <p class="hero-desc" data-animate="fadeUp" data-delay="300">
+        Recognized by <strong>Microsoft, AWS &amp; Google</strong>. Building scalable products with Next.js, Node.js &amp; AWS.
+        Top <strong>1,500 nationally</strong> in Google The Big Code 2026.
+      </p>
+      <div class="hero-actions" data-animate="fadeUp" data-delay="400">
+        <a href="mailto:jameer.xxvi@gmail.com" class="btn-primary">
+          <span>Get In Touch</span>
+          <span class="btn-glow" aria-hidden="true"></span>
+        </a>
+        <a href="https://github.com/jameer" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          View GitHub
+        </a>
+        <a href="#" class="btn-outline" aria-label="Download Resume">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Resume
+        </a>
+      </div>
+      <div class="hero-stats" data-animate="fadeUp" data-delay="500" role="list" aria-label="Key statistics">
+        <div class="stat-item" role="listitem">
+          <div class="stat-num" data-count="250">0</div>
+          <div class="stat-plus" aria-hidden="true">+</div>
+          <div class="stat-label">LeetCode<br>Problems</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-num" data-count="100">0</div>
+          <div class="stat-label">Day<br>Streak</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-num">Top 2</div>
+          <div class="stat-label">GDG Mentor<br>India</div>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-num" data-count="85" data-decimal="true">0</div>
+          <div class="stat-label">CGPA</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-left" data-animate="slideRight">
+          <div class="sec-label">About Me</div>
+          <h2 class="sec-title">Building the Future,<br><em>One Commit at a Time.</em></h2>
+          <div class="about-text">
+            <p>I'm a <strong>Computer Science &amp; Business Systems</strong> student at Vishnu Institute of Technology (CGPA 8.5), deeply passionate about building products that solve real problems.</p>
+            <p>From winning hackathons to qualifying for Google's national coding rounds, I've consistently pushed boundaries — both in code and in community. I founded the first AWS Cloud Club on my campus and mentor 200+ developers regularly.</p>
+            <p>Competitive programmer by night, full-stack engineer by day. Always shipping.</p>
+          </div>
+          <div class="about-roles" role="list" aria-label="Current roles">
+            <div class="role-badge" role="listitem">
+              <span class="role-dot" style="background:#ff9500;" aria-hidden="true"></span>
+              <span>AWS Cloud Captain</span>
+            </div>
+            <div class="role-badge" role="listitem">
+              <span class="role-dot" style="background:#00a4ef;" aria-hidden="true"></span>
+              <span>Microsoft MLSA</span>
+            </div>
+            <div class="role-badge" role="listitem">
+              <span class="role-dot" style="background:#4285f4;" aria-hidden="true"></span>
+              <span>GDG Tech Lead</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-right" data-animate="slideLeft">
+          <div class="edu-section">
+            <div class="edu-header">Education</div>
+            <div class="edu-card">
+              <div class="edu-icon" aria-hidden="true">🎓</div>
+              <div class="edu-info">
+                <h3>Vishnu Institute of Technology</h3>
+                <div class="edu-degree">B.Tech — CSE &amp; Business Systems</div>
+                <div class="edu-meta">
+                  <span>2023 – 2027</span>
+                  <span class="edu-cgpa">CGPA: 8.5 / 10.0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-card-grid" role="list" aria-label="Key highlights">
+            <div class="mini-card" role="listitem">
+              <div class="mini-card-icon" aria-hidden="true">🚀</div>
+              <div class="mini-card-title">200+</div>
+              <div class="mini-card-sub">Developers Mentored</div>
+            </div>
+            <div class="mini-card" role="listitem">
+              <div class="mini-card-icon" aria-hidden="true">🏆</div>
+              <div class="mini-card-title">3</div>
+              <div class="mini-card-sub">Big Tech Recognitions</div>
+            </div>
+            <div class="mini-card" role="listitem">
+              <div class="mini-card-icon" aria-hidden="true">💡</div>
+              <div class="mini-card-title">5+</div>
+              <div class="mini-card-sub">Projects Shipped</div>
+            </div>
+            <div class="mini-card" role="listitem">
+              <div class="mini-card-icon" aria-hidden="true">🌍</div>
+              <div class="mini-card-title">Top 1.5k</div>
+              <div class="mini-card-sub">Google Big Code</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="sec-header" data-animate="fadeUp">
+        <div class="sec-label">Technical Skills</div>
+        <h2 class="sec-title">What I Work With</h2>
+        <p class="sec-sub">Technologies I use to bring ideas to life — from frontend polish to cloud infrastructure.</p>
+      </div>
+      <div class="skills-grid" role="list">
+        <div class="skill-card" data-animate="fadeUp" data-delay="0" role="listitem">
+          <div class="skill-card-header">
+            <div class="skill-icon" style="--icon-color:rgba(79,158,255,0.2);" aria-hidden="true">⚡</div>
+            <h3>Languages</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">C++</span><span class="stag">Java</span><span class="stag">JavaScript</span>
+            <span class="stag">Python</span><span class="stag">SQL</span><span class="stag">TypeScript</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animate="fadeUp" data-delay="100" role="listitem">
+          <div class="skill-card-header">
+            <div class="skill-icon" style="--icon-color:rgba(0,229,192,0.2);" aria-hidden="true">🎨</div>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Next.js</span><span class="stag">React.js</span><span class="stag">TypeScript</span>
+            <span class="stag">Tailwind CSS</span><span class="stag">Framer Motion</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animate="fadeUp" data-delay="200" role="listitem">
+          <div class="skill-card-header">
+            <div class="skill-icon" style="--icon-color:rgba(167,139,250,0.2);" aria-hidden="true">🔧</div>
+            <h3>Backend &amp; DB</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">Node.js</span><span class="stag">Express.js</span><span class="stag">MongoDB</span>
+            <span class="stag">MySQL</span><span class="stag">Firebase</span>
+          </div>
+        </div>
+        <div class="skill-card" data-animate="fadeUp" data-delay="300" role="listitem">
+          <div class="skill-card-header">
+            <div class="skill-icon" style="--icon-color:rgba(255,107,107,0.2);" aria-hidden="true">☁️</div>
+            <h3>Cloud &amp; DevOps</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="stag">AWS EC2</span><span class="stag">AWS S3</span><span class="stag">Lambda</span>
+            <span class="stag">GCP</span><span class="stag">CI/CD</span><span class="stag">Vercel</span>
+          </div>
+        </div>
+      </div>
+      <div class="proficiency-section" data-animate="fadeUp">
+        <h3 class="prof-title">Core Proficiency</h3>
+        <div class="prof-bars">
+          <div class="prof-item">
+            <div class="prof-label"><span>Next.js / React</span><span>90%</span></div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Next.js / React 90%">
+              <div class="prof-fill" data-width="90" style="--bar-color:#4f9eff;"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-label"><span>Node.js / Express</span><span>85%</span></div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js / Express 85%">
+              <div class="prof-fill" data-width="85" style="--bar-color:#00e5c0;"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-label"><span>AWS / Cloud</span><span>80%</span></div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="AWS / Cloud 80%">
+              <div class="prof-fill" data-width="80" style="--bar-color:#ff9500;"></div>
+            </div>
+          </div>
+          <div class="prof-item">
+            <div class="prof-label"><span>DSA / C++</span><span>85%</span></div>
+            <div class="prof-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="DSA / C++ 85%">
+              <div class="prof-fill" data-width="85" style="--bar-color:#a78bfa;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="sec-header" data-animate="fadeUp">
+        <div class="sec-label">Experience</div>
+        <h2 class="sec-title">Where I've Led</h2>
+        <p class="sec-sub">Building communities and shipping impact across India's biggest tech ecosystems.</p>
+      </div>
+      <div class="timeline" role="list">
+        <div class="tl-item" data-animate="slideRight" role="listitem">
+          <div class="tl-marker" style="--marker-color:#ff9500;" aria-hidden="true"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-left">
+                <div class="tl-role">AWS Cloud Captain</div>
+                <div class="tl-company" style="color:#ff9500;">Amazon Web Services</div>
+              </div>
+              <div class="tl-right">
+                <span class="tl-badge" style="--badge-color:#ff9500;--badge-bg:rgba(255,149,0,.12);">AWS</span>
+                <div class="tl-date">Feb 2026 – Present</div>
+              </div>
+            </div>
+            <ul class="tl-points">
+              <li>Founded the first official AWS Cloud Club on campus; selected in a global student leader cohort.</li>
+              <li>Organized hands-on workshops on cloud architecture and serverless computing for <strong>150+ students</strong>.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="ttag">AWS EC2</span><span class="ttag">Lambda</span><span class="ttag">S3</span><span class="ttag">Cloud Architecture</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item" data-animate="slideRight" data-delay="100" role="listitem">
+          <div class="tl-marker" style="--marker-color:#00a4ef;" aria-hidden="true"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-left">
+                <div class="tl-role">Microsoft Learn Student Ambassador</div>
+                <div class="tl-company" style="color:#00a4ef;">Microsoft</div>
+              </div>
+              <div class="tl-right">
+                <span class="tl-badge" style="--badge-color:#00a4ef;--badge-bg:rgba(0,164,239,.12);">MLSA</span>
+                <div class="tl-date">Apr 2026 – Present</div>
+              </div>
+            </div>
+            <ul class="tl-points">
+              <li>Selected among <strong>3,000 global ambassadors</strong> to represent Microsoft's tech ecosystem on campus.</li>
+              <li>Delivered Azure, AI &amp; cloud-native workshops to 100+ students alongside Microsoft Engineers &amp; MVPs.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="ttag">Azure</span><span class="ttag">AI/ML</span><span class="ttag">Cloud Native</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item" data-animate="slideRight" data-delay="200" role="listitem">
+          <div class="tl-marker" style="--marker-color:#4285f4;" aria-hidden="true"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-left">
+                <div class="tl-role">GDG Technical Associate Lead</div>
+                <div class="tl-company" style="color:#4285f4;">Google Developer Groups</div>
+              </div>
+              <div class="tl-right">
+                <span class="tl-badge" style="--badge-color:#4285f4;--badge-bg:rgba(66,133,244,.12);">GDG</span>
+                <div class="tl-date">Aug 2025 – Present</div>
+              </div>
+            </div>
+            <ul class="tl-points">
+              <li>Mentored <strong>200+ participants</strong> at HACK-A-TRON 3.0; recognized as <strong>Top 2 Mentor nationally</strong>.</li>
+              <li>Led Google Cloud &amp; AI Study Jams — helped the institution achieve <strong>Tier-1 GDG status</strong> in India.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="ttag">GCP</span><span class="ttag">AI Study Jams</span><span class="ttag">Community</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item" data-animate="slideRight" data-delay="300" role="listitem">
+          <div class="tl-marker" style="--marker-color:#00e5c0;" aria-hidden="true"><div class="tl-dot"></div></div>
+          <div class="tl-content">
+            <div class="tl-header">
+              <div class="tl-left">
+                <div class="tl-role">Product Contributor</div>
+                <div class="tl-company" style="color:#00e5c0;">DevLoom</div>
+              </div>
+              <div class="tl-right">
+                <span class="tl-badge" style="--badge-color:#00e5c0;--badge-bg:rgba(0,229,192,.12);">Open Source</span>
+                <div class="tl-date">Jan 2026 – Present</div>
+              </div>
+            </div>
+            <ul class="tl-points">
+              <li>Contributed feature ideas and built frontend components with Next.js &amp; TypeScript for <strong>300+ active users</strong>.</li>
+            </ul>
+            <div class="tl-tags">
+              <span class="ttag">Next.js</span><span class="ttag">TypeScript</span><span class="ttag">Product</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section section-alt">
+    <div class="container">
+      <div class="sec-header" data-animate="fadeUp">
+        <div class="sec-label">Projects</div>
+        <h2 class="sec-title">Things I've Built</h2>
+        <p class="sec-sub">Production-grade applications solving real problems.</p>
+      </div>
+      <div class="proj-grid" role="list">
+        <div class="proj-card proj-featured" data-animate="fadeUp" role="listitem">
+          <div class="proj-inner">
+            <div class="proj-num" aria-hidden="true">01</div>
+            <div class="proj-meta">
+              <div class="proj-status live"><span class="status-dot" aria-hidden="true"></span>Live</div>
+            </div>
+            <h3 class="proj-title">Business LMS</h3>
+            <p class="proj-desc">Full-stack Learning Management System with course creation, student enrollment, progress tracking, JWT auth, and RBAC. Deployed on Vercel with full CI/CD pipeline.</p>
+            <div class="proj-tags">
+              <span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">MongoDB</span>
+              <span class="ptag">Node.js</span><span class="ptag">JWT</span>
+            </div>
+            <div class="proj-actions">
+              <a href="#" class="proj-link" aria-label="View Business LMS">
+                <span>View Project</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="proj-gh" aria-label="GitHub for Business LMS">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="proj-glow" aria-hidden="true"></div>
+        </div>
+        <div class="proj-card" data-animate="fadeUp" data-delay="150" role="listitem">
+          <div class="proj-inner">
+            <div class="proj-num" aria-hidden="true">02</div>
+            <div class="proj-meta">
+              <div class="proj-status live"><span class="status-dot" aria-hidden="true"></span>Live</div>
+            </div>
+            <h3 class="proj-title">Mind Well</h3>
+            <p class="proj-desc">Mental wellness app with journaling, mood tracking &amp; mindfulness features. Sanity.io CMS, SSR for fast loads and SEO, Framer Motion animations throughout.</p>
+            <div class="proj-tags">
+              <span class="ptag">Next.js</span><span class="ptag">TypeScript</span><span class="ptag">Sanity.io</span>
+              <span class="ptag">Framer Motion</span><span class="ptag">SSR</span>
+            </div>
+            <div class="proj-actions">
+              <a href="#" class="proj-link" aria-label="View Mind Well">
+                <span>View Project</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" class="proj-gh" aria-label="GitHub for Mind Well">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="proj-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <div class="sec-header" data-animate="fadeUp">
+        <div class="sec-label">Achievements</div>
+        <h2 class="sec-title">The Wall of Wins</h2>
+        <p class="sec-sub">Certifications, swag, and recognition from global programs.</p>
+      </div>
+      <div class="ach-grid" role="list">
+        <div class="ach-card" data-animate="fadeUp" data-delay="0" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">🏆</div>
+          <div class="ach-body">
+            <div class="ach-title">BizVIT Hackathon — 1st Prize</div>
+            <div class="ach-sub">Winner among 50+ teams with a production-ready solution.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="60" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">🌐</div>
+          <div class="ach-body">
+            <div class="ach-title">Google The Big Code 2026</div>
+            <div class="ach-sub">Round 2 Qualifier · Top 1,500 nationally.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="120" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">🔥</div>
+          <div class="ach-body">
+            <div class="ach-title">LeetCode — 250+ Problems</div>
+            <div class="ach-sub">100-day streak across all DSA topics.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="180" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">⭐</div>
+          <div class="ach-body">
+            <div class="ach-title">Google Cloud Study Jams</div>
+            <div class="ach-sub">Top 2 Mentor nationally · Tier-1 GDG status.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="240" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">☁️</div>
+          <div class="ach-body">
+            <div class="ach-title">AWS Bronze Badge</div>
+            <div class="ach-sub">Awarded for leadership, community building &amp; impact.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="300" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">🛠️</div>
+          <div class="ach-body">
+            <div class="ach-title">GSSoC 2026 Contributor</div>
+            <div class="ach-sub">Selected for India's largest open-source program.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="360" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">🎃</div>
+          <div class="ach-body">
+            <div class="ach-title">Hacktoberfest 2025</div>
+            <div class="ach-sub">Super Contributor · Holopin Badge + Official T-shirt.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+        <div class="ach-card" data-animate="fadeUp" data-delay="420" role="listitem">
+          <div class="ach-emoji" aria-hidden="true">📊</div>
+          <div class="ach-body">
+            <div class="ach-title">Naukri Young Turks 2025</div>
+            <div class="ach-sub">97th percentile in a national technical assessment.</div>
+          </div>
+          <div class="ach-shine" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="credentials-section" data-animate="fadeUp">
+        <div class="sec-label" style="margin-bottom:20px;">Credentials &amp; Drive</div>
+        <div class="credentials-links" role="list">
+          <a class="cred-link" href="https://drive.google.com/drive/folders/16BAkDuT4KMf_UKp0kW-wIBbJZ-D_OU0d" target="_blank" rel="noopener noreferrer" role="listitem">
+            <span class="cred-icon" aria-hidden="true">📧</span>
+            <div class="cred-info"><div class="cred-name">Offer &amp; Mail Letters</div><div class="cred-sub">Google Drive</div></div>
+            <svg class="cred-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="cred-link" href="https://drive.google.com/drive/folders/1MqyyRyKH42sLsiCyuScG9BDDOZ1TMGJY" target="_blank" rel="noopener noreferrer" role="listitem">
+            <span class="cred-icon" aria-hidden="true">😎</span>
+            <div class="cred-info"><div class="cred-name">Swag Collection</div><div class="cred-sub">Google Drive</div></div>
+            <svg class="cred-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a class="cred-link" href="https://drive.google.com/drive/folders/1OdnBv0pR0i4pQcBb1mp1wC3tGfkODIAj" target="_blank" rel="noopener noreferrer" role="listitem">
+            <span class="cred-icon" aria-hidden="true">🎓</span>
+            <div class="cred-info"><div class="cred-name">Certificates</div><div class="cred-sub">Google Drive</div></div>
+            <svg class="cred-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt contact-section">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-left" data-animate="slideRight">
+          <div class="sec-label">Contact</div>
+          <h2 class="sec-title">Let's Build<br><em>Something Great.</em></h2>
+          <p class="contact-desc">Currently seeking SDE Internships. Open to full-stack, cloud, and product engineering roles. Let's connect — I respond fast.</p>
+          <div class="contact-availability">
+            <span class="avail-dot" aria-hidden="true"></span>
+            <span>Available for opportunities</span>
+          </div>
+        </div>
+        <div class="contact-right" data-animate="slideLeft">
+          <div class="contact-links" role="list">
+            <a class="contact-item" href="mailto:jameer.xxvi@gmail.com" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">Email</div><div class="ci-value">jameer.xxvi@gmail.com</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="contact-item" href="tel:+916300751897" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.01 2.38a2 2 0 012-2h3A2 2 0 017 2.05a12.94 12.94 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.14a16 16 0 006.29 6.29l1.17-1.17a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">Phone</div><div class="ci-value">+91 63007 51897</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="contact-item" href="https://linkedin.com/in/jameer" target="_blank" rel="noopener noreferrer" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">LinkedIn</div><div class="ci-value">linkedin.com/in/jameer</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="contact-item" href="https://github.com/jameer" target="_blank" rel="noopener noreferrer" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">GitHub</div><div class="ci-value">github.com/jameer</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="contact-item" href="https://leetcode.com/jameer" target="_blank" rel="noopener noreferrer" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 00-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 00-1.209 2.104 5.35 5.35 0 00-.125.513 5.527 5.527 0 00.062 2.362 5.83 5.83 0 00.349 1.017 5.938 5.938 0 001.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 00-1.951-.003l-2.396 2.392a3.021 3.021 0 01-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 01.066-.523 2.545 2.545 0 01.619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 00-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0013.483 0zm-2.866 12.815a1.38 1.38 0 00-1.38 1.382 1.38 1.38 0 001.38 1.382H20.79a1.38 1.38 0 001.38-1.382 1.38 1.38 0 00-1.38-1.382z"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">LeetCode</div><div class="ci-value">leetcode.com/jameer</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="contact-item" href="https://youtube.com/@jameer" target="_blank" rel="noopener noreferrer" role="listitem">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </div>
+              <div class="ci-info"><div class="ci-label">YouTube</div><div class="ci-value">youtube.com/@jameer</div></div>
+              <svg class="ci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo">SJA</div>
+        <div class="footer-tagline">Full-Stack Developer &amp; Cloud Engineer</div>
+      </div>
+      <div class="footer-center">
+        <div class="footer-links" role="list">
+          <a href="#about" role="listitem">About</a>
+          <a href="#experience" role="listitem">Experience</a>
+          <a href="#projects" role="listitem">Projects</a>
+          <a href="#contact" role="listitem">Contact</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-status">
+          <span class="avail-dot" aria-hidden="true"></span>
+          <span>Open to SDE Internships</span>
+        </div>
+        <div class="footer-copy">© 2026 Shaik Jameer Ahmed · Bhimavaram, AP</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
